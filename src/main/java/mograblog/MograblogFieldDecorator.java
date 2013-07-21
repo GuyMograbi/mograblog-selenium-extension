@@ -27,10 +27,6 @@ public class MograblogFieldDecorator implements FieldDecorator {
         defaultFieldDecorator = new DefaultFieldDecorator( new DefaultElementLocatorFactory( searchContext ) );
     }
 
-    private Class getActualType( Field field ){
-        return (Class)((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
-    }
-
 
     public Object getEnhancedObject( Class clzz, MethodInterceptor methodInterceptor  ){
         Enhancer e = new Enhancer();

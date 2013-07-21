@@ -12,11 +12,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
- * Created with IntelliJ IDEA.
  * User: guym
  * Date: 7/20/13
  * Time: 7:15 PM
@@ -28,10 +26,8 @@ public class MograblogLocator {
         private static Logger logger = LoggerFactory.getLogger(ElementHandler.class);
 
         private final ElementLocator locator;
-        private boolean firstDisplayed = false;
         private WebDriver webDriver = null;
         private Field field;
-        // todo : add cache.
 
         private static Set<String> ignoredMethods = new HashSet<String>() {
             {
@@ -48,28 +44,8 @@ public class MograblogLocator {
             logger.debug("created handler for [{}]", field);
         }
 
-        public ElementHandler setFirstDisplayed(boolean firstDisplayed) {
-            logger.debug("setting firstDisplayed [{}] for [{}]", firstDisplayed, field);
-            this.firstDisplayed = firstDisplayed;
-            return this;
-        }
-
-        private WebElement getFirstDisplayed() {
-            List<WebElement> elements = locator.findElements();
-            for (WebElement webElement : elements) {
-                if (webElement.isDisplayed()) {
-                    return webElement;
-                }
-            }
-            return null;
-        }
-
         private WebElement locateElement() {
-            if (firstDisplayed) {
-                return getFirstDisplayed();
-            } else {
-                return locator.findElement();
-            }
+            return locator.findElement();
         }
 
 
@@ -79,7 +55,7 @@ public class MograblogLocator {
             if (ignoredMethods.contains(method.getName())) {
                 return methodProxy.invokeSuper(o, objects);
             }
-            logger.debug("[{}] intercepted method [{}] on object [{}]. Will search for first displayed [{}]", new Object[]{field, method, o, firstDisplayed});
+            logger.debug("[{}] intercepted method [{}] on object [{}]", field, method, o);
             if (o instanceof MograblogElement) {
                 if (!method.getName().equals("setRootElement") && !method.getName().equals("setWebDriver")) {
                     MograblogElement comp = (MograblogElement) o;
@@ -96,7 +72,7 @@ public class MograblogLocator {
                     throw e.getCause();
                 }
 
-            } else if (o instanceof WebElement && firstDisplayed) {// only handle first displayed
+            } else if (o instanceof WebElement ) {// only handle first displayed
                 WebElement displayedElement = locateElement();
 
                 if (displayedElement != null) {
