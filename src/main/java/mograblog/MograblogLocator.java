@@ -33,6 +33,7 @@ public class MograblogLocator {
             {
                 add("toString");
                 add("hashCode");
+                add("getDescription");
             }
         };
 

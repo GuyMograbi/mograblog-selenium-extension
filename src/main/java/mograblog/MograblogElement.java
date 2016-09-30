@@ -13,6 +13,8 @@ public abstract class MograblogElement {
     protected WebElement rootElement;
 
     protected WebDriver webDriver;
+    
+    protected String description;
 
     public void setRootElement(WebElement rootElement) {
         this.rootElement = rootElement;
@@ -20,5 +22,9 @@ public abstract class MograblogElement {
 
     public void setWebDriver(WebDriver webDriver) {
         this.webDriver = webDriver;
+    }
+    
+    public String getDescription(){
+        return description;
     }
 }

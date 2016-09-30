@@ -23,6 +23,7 @@ public class TestSelectElement {
 
         PageFactory.initElements( new MograblogFieldDecorator( firefoxDriver, firefoxDriver ), page );
         page.changeToOption2();
+        System.out.println("page.select.getDescription() = " + page.select.getDescription());
 
         try{ // normally we don't need this, but we want to see it change this time, so I added sleep
             Thread.sleep(3000);

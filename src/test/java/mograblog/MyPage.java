@@ -12,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
 public class MyPage {
 
     @FindBy(css="select#testme")
+    @Description("the select element in the post")
     public MograblogSelect select;
 
     public void changeToOption2(){

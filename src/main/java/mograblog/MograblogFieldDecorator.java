@@ -37,7 +37,17 @@ public class MograblogFieldDecorator implements FieldDecorator {
 
     public Object decorate( ClassLoader loader, Field field ) {
         if ( MograblogElement.class.isAssignableFrom( field.getType() )  && field.isAnnotationPresent( FindBy.class )) {
-            return getEnhancedObject( field.getType(), getElementHandler( field ) );
+            MograblogElement me = (MograblogElement) getEnhancedObject( field.getType(), getElementHandler( field ) );
+            if ( field.isAnnotationPresent(Description.class)) {
+                try {
+                    MograblogElement.class.getDeclaredField("description").set(me,field.getAnnotation(Description.class).value());
+                }catch(Exception e){
+                    throw new RuntimeException("unable to set description",e);
+                }
+            }
+            me.getDescription();
+            return me;
+            
         }else{
             return defaultFieldDecorator.decorate( loader, field );
         }
