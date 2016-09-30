@@ -7,16 +7,19 @@
     <groupId>MograblogSeleniumExtensions</groupId>
     <artifactId>MograblogSeleniumExtensions</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <selenium.version>2.53.1</selenium.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
-            <version>2.32.0</version>
+            <version>${selenium.version}</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>2.32.0</version>
+            <version>${selenium.version}</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
