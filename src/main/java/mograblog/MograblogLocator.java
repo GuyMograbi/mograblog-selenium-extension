@@ -49,7 +49,6 @@ public class MograblogLocator {
         }
 
 
-        @Override
         public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
 
             if (ignoredMethods.contains(method.getName())) {

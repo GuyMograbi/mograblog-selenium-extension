@@ -18,7 +18,7 @@ public class TestSelectElement {
         WebDriver firefoxDriver = new FirefoxDriver();
 
 
-        firefoxDriver.get("http://blog.mograbi.info/2013/07/extending-selenium-in-java.html");
+        firefoxDriver.get("http://www.mograblog.com/2013/08/extending-selenium-in-java.html");
         MyPage page = new MyPage();
 
         PageFactory.initElements( new MograblogFieldDecorator( firefoxDriver, firefoxDriver ), page );

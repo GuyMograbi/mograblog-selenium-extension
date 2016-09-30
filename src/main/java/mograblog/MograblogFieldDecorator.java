@@ -11,7 +11,6 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 import org.openqa.selenium.support.pagefactory.FieldDecorator;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
 
 public class MograblogFieldDecorator implements FieldDecorator {
 
@@ -36,7 +35,6 @@ public class MograblogFieldDecorator implements FieldDecorator {
     }
 
 
-    @Override
     public Object decorate( ClassLoader loader, Field field ) {
         if ( MograblogElement.class.isAssignableFrom( field.getType() )  && field.isAnnotationPresent( FindBy.class )) {
             return getEnhancedObject( field.getType(), getElementHandler( field ) );
