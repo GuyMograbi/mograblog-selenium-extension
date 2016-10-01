@@ -16,8 +16,6 @@ public class TestSelectElement {
     public void shouldHave2Options(){
 
         WebDriver firefoxDriver = new FirefoxDriver();
-
-
         firefoxDriver.get("http://www.mograblog.com/2013/08/extending-selenium-in-java.html");
         MyPage page = new MyPage();
 
